@@ -9,15 +9,24 @@ class App extends React.Component {
   };
 
   add = () => {
-    this.setState({ count: this.state.count + 1 });
-    //이렇게 this.state.count사용하는 것은 비추천함
+    this.setState(current => ({ count: current.count + 1 }));
   };
   minus = () => {
     this.setState(current => ({ count: current.count - 1 }));
-    //setState할 때, react에서 외부의 상태에 의존하지 않는 가장 좋은 방법임
   };
 
+  componentDidMount() {
+    console.log("Component rendered");
+  }
+  componentDidUpdate() {
+    console.log("I just updated");
+  }
+  componentWillUnmount() {
+    console.log("Goodbye, creul world!");
+  }
+
   render() {
+    console.log("I'm rendering")
     return (
       <div>
         <h1>The number is: {this.state.count}</h1>
