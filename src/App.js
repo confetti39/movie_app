@@ -9,10 +9,12 @@ class App extends React.Component {
   };
 
   add = () => {
-    console.log("add");
+    this.setState({ count: this.state.count + 1 });
+    //이렇게 this.state.count사용하는 것은 비추천함
   };
   minus = () => {
-    console.log("munus");
+    this.setState(current => ({ count: current.count - 1 }));
+    //setState할 때, react에서 외부의 상태에 의존하지 않는 가장 좋은 방법임
   };
 
   render() {
